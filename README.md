@@ -1,5 +1,3 @@
-# docker.drdpus.info
+# Docker pro Asterion moduly
 
-Něco už prostě potřebovalo hodit do Dockeru:
-
-- https://asterionrpg.cz/
+Zatím je to strašně tajný, tak pst!
