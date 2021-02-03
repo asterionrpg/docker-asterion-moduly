@@ -1,7 +1,0 @@
-http://asterionrpg.loc {
-    reverse_proxy * www.asterionrpg:80 # www.asterionrpg is a name of another Docker instance, available via docker compose DNS
-}
-
-http://www.asterionrpg.loc {
-    redir http://asterionrpg.loc{uri}
-}

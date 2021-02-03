@@ -1,7 +1,0 @@
-asterionrpg.cz {
-    reverse_proxy * www.asterionrpg:80 # www.asterionrpg is a name of another Docker instance, available via docker compose DNS
-}
-
-www.asterionrpg.cz {
-    redir asterionrpg.cz{uri}
-}

@@ -1,6 +1,6 @@
 version: "3"
 services:
-  asterionrpg:
+  moduly.asterionrpg:
     build: .
     environment:
       PHP_IDE_CONFIG: "serverName=asterionrpg.loc"
@@ -15,7 +15,7 @@ services:
       - -c
       - set -x && docker-php-ext-enable xdebug && touch /tmp/xdebug.log && chmod 0777 /tmp/xdebug.log && /bin/bash /entrypoint.sh
     labels:
-      - "traefik.backend=asterionrpg"
+      - "traefik.backend=moduly.asterionrpg"
       - "traefik.frontend.rule=HostRegexp: asterionrpg.loc,{subdomain:(.+[.])+}asterionrpg.loc"
       - "traefik.docker.network=docker-www"
     networks:

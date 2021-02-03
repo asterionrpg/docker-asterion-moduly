@@ -1,6 +1,6 @@
 version: "3"
 services:
-  asterionrpg:
+  moduly.asterionrpg:
     environment:
       PROJECT_ENVIRONMENT: "prod"
     volumes:
@@ -11,3 +11,11 @@ services:
       - "80:80"
       - "443:443"
     restart: "always"
+    networks:
+      - default
+      - proxy
+
+networks:
+  proxy:
+    external:
+      name: docker-www
