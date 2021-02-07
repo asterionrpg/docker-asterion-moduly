@@ -29,10 +29,8 @@ RUN pecl channel-update pecl.php.net \
     && pecl install yaml-2.2.1 \
     && docker-php-ext-enable yaml \
 # https://pecl.php.net/package/xdebug (not available via docker-php-ext-install)
-    && pecl install xdebug-3.0.2 \
 # XDebug is enabled on-demand, see docker-compose.override.dev.yml
-    && docker-php-ext-install intl \
-    && docker-php-ext-enable intl
+    && pecl install xdebug-3.0.2
 
 # re-build www-data user with same user ID and group ID as a current host user (you)
 RUN if getent passwd www-data ; then userdel -f www-data; fi \
