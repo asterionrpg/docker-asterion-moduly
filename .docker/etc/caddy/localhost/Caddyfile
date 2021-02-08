@@ -1,2 +1,3 @@
 import Caddyfile.skeleton.asterionrpg.loc
 import Caddyfile.hlavnimodul.asterionrpg.loc
+import Caddyfile.dalavy.asterionrpg.loc

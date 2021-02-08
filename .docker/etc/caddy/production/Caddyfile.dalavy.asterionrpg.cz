@@ -1,0 +1,4 @@
+http://hlavnimodul.asterionrpg.cz {
+    root * /var/www/hlavni-modul
+    import CaddyfilePhpProject
+}

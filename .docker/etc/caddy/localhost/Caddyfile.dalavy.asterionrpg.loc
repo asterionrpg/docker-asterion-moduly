@@ -1,0 +1,4 @@
+http://dalavy.asterionrpg.loc {
+    root * /var/www/dalavy
+    import CaddyfilePhpProject
+}

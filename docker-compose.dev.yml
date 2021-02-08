@@ -14,10 +14,12 @@ services:
       - sh
       - -c
       - set -x && docker-php-ext-enable xdebug && touch /tmp/xdebug.log && chmod 0777 /tmp/xdebug.log && /bin/bash /entrypoint.sh
+    expose:
+      - "80"
+    restart: "no"
     networks:
       - default
       - proxy
-    restart: "no"
 
 networks:
   proxy:
