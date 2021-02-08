@@ -7,6 +7,9 @@ ARG GROUP_ID=1000
 RUN apt-get update && apt-get install -y --no-install-recommends \
       mc \
       vim \
+			# procps to get ps, top
+      procps \
+      htop \
       zlib1g-dev \
       libaio-dev \
       libxml2-dev \
