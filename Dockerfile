@@ -35,6 +35,10 @@ RUN pecl channel-update pecl.php.net \
 # XDebug is enabled on-demand, see docker-compose.override.dev.yml
     && pecl install xdebug-3.0.2
 
+RUN curl -sS https://getcomposer.org/installer | php \
+		&& mv composer.phar /usr/local/bin/composer
+		&& chmod +x /usr/local/bin/composer
+
 # re-build www-data user with same user ID and group ID as a current host user (you)
 RUN if getent passwd www-data ; then userdel -f www-data; fi \
 		&& if getent group www-data ; then groupdel www-data; fi \
@@ -52,11 +56,11 @@ RUN mkdir -p /home/www-data/bin \
 		&& chmod +x /home/www-data/bin/composer \
   	&& echo 'export PATH="/home/www-data/bin:$PATH"' >> ~/.profile
 
-RUN echo 'alias ll="ls -al"' >> ~/.bashrc
+RUN echo 'alias ll="ls -al"' >> /home/www-data/.bashrc
 
 USER root
 
-RUN echo 'alias ll="ls -al"' >> ~/.bashrc \
+RUN echo 'alias ll="ls -al"' >> /root/.bashrc \
 		&& mkdir -p /var/log/php/tracy && chown -R www-data /var/log/php && chmod +w /var/log/php
 
 RUN echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" > /etc/apt/sources.list.d/caddy-fury.list \
