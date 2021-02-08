@@ -27,8 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Fix debconf warnings upon build
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN docker-php-ext-install intl \
-		&& docker-php-ext-enable intl
+RUN docker-php-ext-install intl
 
 RUN pecl channel-update pecl.php.net \
 # https://pecl.php.net/package/yaml (not available via docker-php-ext-install)
