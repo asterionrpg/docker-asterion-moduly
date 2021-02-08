@@ -27,6 +27,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Fix debconf warnings upon build
 ARG DEBIAN_FRONTEND=noninteractive
 
+RUN docker-php-ext-install intl \
+		&& docker-php-ext-enable intl
+
 RUN pecl channel-update pecl.php.net \
 # https://pecl.php.net/package/yaml (not available via docker-php-ext-install)
     && pecl install yaml-2.2.1 \
@@ -36,7 +39,7 @@ RUN pecl channel-update pecl.php.net \
     && pecl install xdebug-3.0.2
 
 RUN curl -sS https://getcomposer.org/installer | php \
-		&& mv composer.phar /usr/local/bin/composer
+		&& mv composer.phar /usr/local/bin/composer \
 		&& chmod +x /usr/local/bin/composer
 
 # re-build www-data user with same user ID and group ID as a current host user (you)
@@ -68,6 +71,8 @@ RUN echo "deb [trusted=yes] https://apt.fury.io/caddy/ /" > /etc/apt/sources.lis
 		&& touch /var/log/caddy && chown caddy /var/log/caddy
 
 COPY .docker /
+
+WORKDIR /var/www
 
 RUN chmod +x /entrypoint.sh
 
