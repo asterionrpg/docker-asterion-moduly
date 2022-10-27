@@ -2,7 +2,7 @@
 version: "3"
 services:
   moduly.asterionrpg:
-    build: .
+    image: jaroslavtyc/moduly.asterionrpg:latest
     environment:
       PHP_IDE_CONFIG: "serverName=asterionrpg.loc"
       PROJECT_ENVIRONMENT: "dev"
