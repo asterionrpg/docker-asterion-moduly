@@ -1,3 +1,5 @@
+# docker pull php:8.0-fpm && docker build --no-cache --tag jaroslavtyc/moduly.asterionrpg:latest . && docker push jaroslavtyc/moduly.asterionrpg:latest
+
 FROM php:8.0-fpm
 
 ARG USER_ID=1000
@@ -31,11 +33,11 @@ RUN docker-php-ext-install intl
 
 RUN pecl channel-update pecl.php.net \
 # https://pecl.php.net/package/yaml (not available via docker-php-ext-install)
-    && pecl install yaml-2.2.1 \
+    && pecl install yaml \
     && docker-php-ext-enable yaml \
 # https://pecl.php.net/package/xdebug (not available via docker-php-ext-install)
 # XDebug is enabled on-demand, see docker-compose.override.dev.yml
-    && pecl install xdebug-3.0.2
+    && pecl install xdebug
 
 RUN curl -sS https://getcomposer.org/installer | php \
 		&& mv composer.phar /usr/local/bin/composer \

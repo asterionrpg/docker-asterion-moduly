@@ -1,3 +1,4 @@
+# # docker pull jaroslavtyc/moduly.asterionrpg:latest && docker-compose build
 version: "3"
 services:
   moduly.asterionrpg:
